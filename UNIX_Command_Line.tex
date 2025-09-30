@@ -51,7 +51,7 @@
 
 \begin{frame}{Information on the Web}
   \begin{block}{Astrophysics Wiki}
-    \url{https://liveuclac.sharepoint.com/sites/PhysAstAstPhysGrp}
+    {\small{\url{https://liveuclac.sharepoint.com/sites/PhysAstAstPhysGrp}}}
     This Wiki is freely viewable and editable by all members of the department. Please use it to record information that you think will be useful to others (including your future self). Be bold!
   \end{block}
   \begin{block}{UCL Research Computing Platforms}
@@ -85,7 +85,7 @@
     \begin{itemize}
       \item General purpose Astrophysics servers available from outside UCL: \server{zuserver1} and \server{zuserver2}
       \item UCL Cosmology HPC clusters: \server{splinter} and \server{hypatia}
-      \item Other UCL clusters: \server{Myriad} and \server{Kathleen}
+      \item Other UCL clusters: \server{Myriad} (2018) and \server{Kathleen} (2020)
       \item National clusters: \server{DiRAC} (UK) and \server{NERSC} (US)
     \end{itemize}
   \end{block}
@@ -106,7 +106,7 @@
 \begin{frame}{Accessing remote machines}
   \begin{block}{Credentials}
     \begin{itemize}
-      \item You will need a \textit{username} and \textit{password} for any machine that you want to access.
+      \item You will need a \textit{username} and \textit{password} for any remote machine that you want to access.
       \item Contact Edd Edmondson (e.edmondson@ucl.ac.uk) or John Deacon (j.deacon@ucl.ac.uk) to get these credentials.
     \end{itemize}
   \end{block}
@@ -242,8 +242,8 @@
 
 \begin{frame}{Keyboard speedups}
   \begin{itemize}
-    \item Linux has several speedups that make it efficient to use the keyboard to type commands.
     \item Keyboard interfaces predate more modern graphical interfaces; they are less friendly for new users, but are low-tech, robust, and very efficient for experienced users.
+    \item Linux has several speedups that make it efficient to use the keyboard to type commands.
   \end{itemize}
 \end{frame}
 
@@ -384,7 +384,7 @@
   \begin{itemize}
   \item Use \command{>} to \textit{redirect} the text output from a program to go to a file instead of the screen. Example: \command{ls >  listing.txt}.
   \item Conversely use \command{<} to allow text input to a program to be taken from a file rather than the keyboard.
-  \item Use the pipe symbol \command{|} to allow output from one program to be used an input for another. Example: \command{ifconfig | grep UP}.
+  \item Use the pipe symbol \command{|} to allow output from one program to be used an input for another. Example: \command{ip addr show | grep UP}.
   \end{itemize}
 \end{frame}
 
@@ -394,14 +394,9 @@
   \item bash comes with a Turing-complete scripting language in which you can write programs.
   \item Such scripts are usually used for control of processing (rather than for e.g. actual processing of data).
   \item The language has some idiosyncrasies (e.g. \command{fi} instead of \command{end\_if}).
-  \item Every programs return an integer \textit{return code} ($0 = $ success) that can be used in conditional statements.
+  \item Every programs return an integer \textit{return code} ($0$ means `success') that can be used in conditional statements.
   \item It is common to use the extension \filename{.sh} for such files.
   \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Example bash script}
-  \includegraphics[scale=0.9]{bash\_script.jpg}
 \end{frame}
 
 
@@ -417,6 +412,11 @@
 \end{frame}
 
 
+\begin{frame}{Example bash script}
+  \includegraphics[scale=0.9]{bash\_script.jpg}
+\end{frame}
+
+
 \begin{frame}{Scripts and environment variables}
 \begin{itemize}
 \item It's natural to write a script that sets environment variables.
@@ -429,7 +429,7 @@
 \begin{frame}{Modules}
 \begin{itemize}
 \item Both \server{splinter} and \server{hypatia} use the \command{module} package to give access to software packages (typically by setting appropriate environment variables).
-\item Example: on \server{splinter}, \command{module load dev\_tools/oct2021/hdf5-1.12.1} makes version \texttt{1.12.1} of the \command{hdf5} package available.
+\item Example: on \server{splinter}, \command{module load eigen/3.3.7} makes version \texttt{3.3.7} of the \command{eigen} package available.
 \item Use \command{module avail} to see what you can load and \command{module list} to see what you have loaded.
 \item If desired, you can extend this system to include your own software.
 \end{itemize}
@@ -440,10 +440,16 @@
 \begin{itemize}
 \item \server{splinter} and \server{hypatia} are \textit{high-performance computing} (HPC) clusters.
 \item Each has many linked computers (called \textit{nodes}). Most nodes are \textit{compute} nodes; these are available for processing. The \textit{login} node (which you login to) is special. Use it for control, for editing and for compiling, but not for heavy processing!
+\item These clusters use \command{slurm} for job scheduling.
 \item \command{srun --pty bash} will give you a session on one of the compute nodes.
-\item Alternatively you can use \command{sbatch} to launch an unattended job on one or several compute nodes.
+\item Alternatively you can use \command{sbatch <jobfile>} to launch an unattended job on one or several compute nodes.
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Example slurm jobfile}
+  \includegraphics[scale=0.8]{slurm_jobfile.jpg}
+\end{frame}
+
 
 
 \end{document}
