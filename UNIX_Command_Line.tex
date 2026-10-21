@@ -30,7 +30,7 @@
 \title{Introduction to the UNIX Command Line}
 \author{Lorne~Whiteway \\ lorne.whiteway.13@ucl.ac.uk}
 \institute{Astrophysics Group\\  Department of Physics and Astronomy\\  University College London}
-\date{7 October 2025}
+\date{23 October 2026}
 
 \begin{document}
 
@@ -58,7 +58,7 @@
     \url{https://www.rc.ucl.ac.uk/}
   \end{block}
   \begin{block}{Stack Overflow}
-    \url{http://stackoverflow.com/}  \ (But will it survive ChatGPT?)
+    \url{http://stackoverflow.com/}  \\ Still useful, but being superseded by LLMs
   \end{block}
 \end{frame}
 
@@ -162,7 +162,7 @@
 
 \begin{frame}{X-Windows client}
   \begin{itemize}
-    \item If the remote program that you are running produces graphical output, then you must have a program (an `X-Windows client') running on your local machine to display this graphical output.
+    \item If the remote program that you are running produces graphical output, then you must have a program (an `X-Windows server') running on your local machine to display this graphical output.
     \item On Windows you can use XMing (\url{https://sourceforge.net/projects/xming/}) or Exceed (available on the UCL Desktop).
     \item On Mac you can use XQuartz.
     \item On Linux you don't need to do anything special - the graphical interface is already an X-server.
@@ -196,7 +196,7 @@
     \item Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.
     \item Various command shell programs are used: \command{bash}, \command{csh}, \command{tcsh}, \command{zsh}, etc. Use \command{echo \$0} to see which one is in use.
     \item This presentation assumes \command{bash}. Other shells may use different names for some of the commands discussed.
-    \item New accounts on UCL Astro servers get given \command{tcsh} as a shell. But if you don't use \texttt{Starlink} software, it's safe to ask to be switched to \command{bash}.
+    \item New accounts on UCL Astro servers get given \command{tcsh} as a shell. But if you don't use \texttt{Starlink} software (\url{https://starlink.eao.hawaii.edu/starlink}), it's safe to ask to be switched to \command{bash}.
    \end{itemize}
 \end{frame}
 
@@ -384,7 +384,7 @@
   \begin{itemize}
   \item Use \command{>} to \textit{redirect} the text output from a program to go to a file instead of the screen. Example: \command{ls >  listing.txt}.
   \item Conversely use \command{<} to allow text input to a program to be taken from a file rather than the keyboard.
-  \item Use the pipe symbol \command{|} to allow output from one program to be used an input for another. Example: \command{ip addr show | grep UP}.
+  \item Use the pipe symbol \command{|} to allow output from one program to be used as input for another. Example: \command{ip addr show | grep UP}.
   \end{itemize}
 \end{frame}
 
@@ -429,7 +429,7 @@
 \begin{frame}{Modules}
 \begin{itemize}
 \item Both \server{splinter} and \server{hypatia} use the \command{module} package to give access to software packages (typically by setting appropriate environment variables).
-\item Example: on \server{splinter}, \command{module load eigen/3.3.7} makes version \texttt{3.3.7} of the \command{eigen} package available.
+\item Example: on \server{hypatia}, \command{module load eigen/3.3.7} makes version \texttt{3.3.7} of the \command{eigen} package available.
 \item Use \command{module avail} to see what you can load and \command{module list} to see what you have loaded.
 \item If desired, you can extend this system to include your own software.
 \end{itemize}
